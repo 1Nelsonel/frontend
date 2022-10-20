@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Card } from 'react-bootstrap'
+import { Row, Col, Image, ListGroup, Card, ListGroupItem } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import products from '../products'
 
@@ -18,7 +18,7 @@ const ProductScreen = () => {
                 </Col>
 
                 <Col md={3}>
-                    <ListGroup varinat='flush'>
+                    <ListGroup variant='flush'>
                         <ListGroup.Item>
                             <h3>{product.name}</h3>
                         </ListGroup.Item>
@@ -32,13 +32,39 @@ const ProductScreen = () => {
                         </ListGroup.Item>
 
                         <ListGroup.Item>
-                            Description: ${product.description}
+                            Description: {product.description}
                         </ListGroup.Item>
 
                     </ListGroup>
                 </Col>
 
-                <Col md={3}></Col>
+                <Col md={3}>
+                    <Card>
+                        <ListGroupItem variant='flush'>
+                            <ListGroup.Item>
+                                <Row>
+                                    <Col>
+                                        Price:
+                                    </Col>
+                                    <Col>
+                                        <strong>{product.price}</strong>
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
+
+                            <ListGroup.Item>
+                                <Row>
+                                    <Col>
+                                        Status:
+                                    </Col>
+                                    <Col>
+                                        {product.countInStock > 0 ? 'In stock' : 'Out of stock'}
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
+                        </ListGroupItem>
+                    </Card>
+                </Col>
             </Row>
         </div>
     )
