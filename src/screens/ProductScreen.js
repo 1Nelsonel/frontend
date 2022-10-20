@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Card, ListGroupItem } from 'react-bootstrap'
+import { Row, Col, Image, ListGroup, Card, ListGroupItem, Button } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import products from '../products'
 
@@ -34,20 +34,17 @@ const ProductScreen = () => {
                         <ListGroup.Item>
                             Description: {product.description}
                         </ListGroup.Item>
-
                     </ListGroup>
                 </Col>
 
                 <Col md={3}>
                     <Card>
-                        <ListGroupItem variant='flush'>
+                        <ListGroup variant='flush'>
                             <ListGroup.Item>
                                 <Row>
+                                    <Col>Price:</Col>
                                     <Col>
-                                        Price:
-                                    </Col>
-                                    <Col>
-                                        <strong>{product.price}</strong>
+                                        <strong>${product.price}</strong>
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
@@ -62,7 +59,11 @@ const ProductScreen = () => {
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
-                        </ListGroupItem>
+
+                            <ListGroup.Item>
+                                <Button className='btn-block' disabled={product.countInStock == 0} type='button'>Add to Cart </Button>
+                            </ListGroup.Item>
+                        </ListGroup>
                     </Card>
                 </Col>
             </Row>
